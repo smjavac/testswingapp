@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SimpleWindow extends JFrame {
+
     SimpleWindow(){
         super("Пробное окно");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
