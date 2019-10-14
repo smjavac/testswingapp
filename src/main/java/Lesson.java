@@ -83,15 +83,13 @@ public class Lesson {
         if (a == x * y){
             scope ++;
             if (scope <= total){
-                JFrame frame = new JFrame("Отлично");
-                JOptionPane.showMessageDialog(frame, "Ты молодец!");
+                JOptionPane.showMessageDialog  (new JFrame(),"Ты молодец!", "Правильно!", 1);
                 jTextField.setText("");
                 update();
 
             }
             else {
-                JFrame frame = new JFrame("Отлично");
-                JOptionPane.showMessageDialog(frame, "Игра окончена!");
+                JOptionPane.showMessageDialog  (new JFrame(),"Игра окончена!", "Конец!", 0);
             }
         }
     }
