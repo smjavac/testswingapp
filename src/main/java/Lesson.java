@@ -9,14 +9,17 @@ public class Lesson {
    static private int x;
    static private int y;
    static private int scope;
-    static private String labelText;
+    //static private String labelText;
     static String text;
+    private  static JTextField jTextField;
+    private static JLabel jLabel = new JLabel();
 
     public Lesson(int total){
         this.total = total;
     }
 
     public static void main(String[] args) {
+        new Lesson(3);
         update();
         JPanel jPanel = new JPanel();
         jPanel.setLayout(null);
@@ -26,14 +29,15 @@ public class Lesson {
         JLabel gImage = new JLabel(new ImageIcon("batman.jpg"));
         gImage.setSize(400,450);
         gImage.setLocation(0,-50);
-        final JTextField jTextField = new JTextField();
+        jTextField = new JTextField();
         jTextField.setSize(100,30);
         jTextField.setLocation(430,100);
       // text = jTextField.getText();
 
-        JLabel jLabel = new JLabel(labelText);
+        //jLabel.setText(labelText);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 check(jTextField.getText());
             }
         });
@@ -70,19 +74,24 @@ public class Lesson {
     static void update() {
         x  = (int) (Math.random() * 10);
         y =  (int) (Math.random() * 10);
-        labelText = x + " * " +  y;
+        String labelText = x + " * " +  y;
+        jLabel.setText(labelText);
     }
 
     static void check(String text){
         int a = Integer.parseInt(text);
         if (a == x * y){
             scope ++;
-            if (scope < total){
-                JFrame frame = new JFrame();
-                JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");
+            if (scope <= total){
+                JFrame frame = new JFrame("Отлично");
+                JOptionPane.showMessageDialog(frame, "Ты молодец!");
+                jTextField.setText("");
+                update();
 
-
-
+            }
+            else {
+                JFrame frame = new JFrame("Отлично");
+                JOptionPane.showMessageDialog(frame, "Игра окончена!");
             }
         }
     }
