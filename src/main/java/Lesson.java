@@ -13,13 +13,14 @@ public class Lesson {
     static String text;
     private  static JTextField jTextField;
     private static JLabel jLabel = new JLabel();
+    static JFrame jFrame;
 
     public Lesson(int total){
         this.total = total;
     }
 
     public static void main(String[] args) {
-        new Lesson(3);
+        new Lesson(1);
         update();
         JPanel jPanel = new JPanel();
         jPanel.setLayout(null);
@@ -46,7 +47,7 @@ public class Lesson {
 
         jLabel.setSize(100,50);
         jLabel.setLocation(430,10);
-        JFrame jFrame = getFrame();
+        jFrame = getFrame();
 
         jPanel.add(button);
         jPanel.add(jLabel);
@@ -85,12 +86,18 @@ public class Lesson {
             if (scope <= total){
                 JOptionPane.showMessageDialog  (new JFrame(),"Ты молодец!", "Правильно!", 1);
                 jTextField.setText("");
+                jTextField.grabFocus();
                 update();
 
             }
             else {
                 JOptionPane.showMessageDialog  (new JFrame(),"Игра окончена!", "Конец!", 0);
+                jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
+        } else {
+            JOptionPane.showMessageDialog  (new JFrame(),"Попробуй еще раз!", "Не правильно!", 0);
+            jTextField.setText("");
+            jTextField.grabFocus();
         }
     }
 }
