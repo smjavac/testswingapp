@@ -14,6 +14,7 @@ public class Lesson {
     private  static JTextField jTextField;
     private static JLabel jLabel = new JLabel();
     static JFrame jFrame;
+    static Icon icon;
 
     public Lesson(int total){
         this.total = total;
@@ -84,18 +85,31 @@ public class Lesson {
         if (a == x * y){
             scope ++;
             if (scope <= total){
-                JOptionPane.showMessageDialog  (new JFrame(),"Ты молодец!", "Правильно!", 1);
+                icon = new ImageIcon("ok.jpg");
+                JOptionPane.showMessageDialog  (new JFrame(),"Ты молодец!", "", 1, icon);
                 jTextField.setText("");
                 jTextField.grabFocus();
                 update();
 
             }
             else {
-                JOptionPane.showMessageDialog  (new JFrame(),"Игра окончена!", "Конец!", 0);
-                jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                icon = new ImageIcon("end.jpg");
+               int result = JOptionPane.showConfirmDialog (new JFrame(), "Еще одну битву?",
+                       "Конец битвы!", JOptionPane.YES_NO_OPTION, 2, icon);
+               if (result == JOptionPane.YES_OPTION){
+                   jTextField.setText("");
+                   jTextField.grabFocus();
+                   scope = 0;
+                   update();
+               } else {
+                  jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                  jFrame.dispose();
+                  System.exit(0);
+               }
             }
         } else {
-            JOptionPane.showMessageDialog  (new JFrame(),"Попробуй еще раз!", "Не правильно!", 0);
+            icon = new ImageIcon("wrong2.jpg");
+            JOptionPane.showMessageDialog  (new JFrame(),"Попробуй еще раз!", "Не правильно!", 0, icon);
             jTextField.setText("");
             jTextField.grabFocus();
         }
