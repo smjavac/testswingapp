@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 
 public class Lesson {
    static private int total;
-   static private int x;
-   static private int y;
-   static private int scope;
-    //static private String labelText;
-    static String text;
-    private  static JTextField jTextField;
-    private static JLabel jLabel = new JLabel();
-    static JFrame jFrame;
-    static Icon icon;
-
+//   static private int x;
+//   static private int y;
+//   static private int scope;
+//    //static private String labelText;
+//    static String text;
+//    private  static JTextField jTextField;
+//    private static JLabel jLabel = new JLabel();
+//    static JFrame jFrame;
+//    static Icon icon;
+//
     public Lesson(int total){
         this.total = total;
     }
@@ -34,9 +34,9 @@ public class Lesson {
 //        jTextField = new JTextField();
 //        jTextField.setSize(100,30);
 //        jTextField.setLocation(430,100);
-//      // text = jTextField.getText();
 //
-//        //jLabel.setText(labelText);
+//
+//
 //        button.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
 //
@@ -63,15 +63,15 @@ public class Lesson {
         SimpleWindow.update();
     }
 
-    static JFrame getFrame() {
-        JFrame jFrame = new JFrame(){};
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setVisible(true);
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension dimension = toolkit.getScreenSize();
-        jFrame.setBounds(dimension.width/2-250, dimension.height/2-150, 600, 400);
-        return jFrame;
-    }
+//    static JFrame getFrame() {
+//        JFrame jFrame = new JFrame(){};
+//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        jFrame.setVisible(true);
+//        Toolkit toolkit = Toolkit.getDefaultToolkit();
+//        Dimension dimension = toolkit.getScreenSize();
+//        jFrame.setBounds(dimension.width/2-250, dimension.height/2-150, 600, 400);
+//        return jFrame;
+//    }
 
 //    static void update() {
 //        x  = (int) (Math.random() * 10);
