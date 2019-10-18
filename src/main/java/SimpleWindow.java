@@ -22,21 +22,17 @@ public class SimpleWindow extends JFrame {
         panel = new JPanel();
         panel.setLayout(null);
         this.total = total;
-        button = new JButton("Кнопка");
-        button.setSize(80, 30);
-        button.setLocation(20,20);
-        panel.add(button);
-        button = new JButton("Кнопка с длинной надписью");
-        button.setSize(120, 40);
-        button.setLocation(70,50);
+        button = new JButton("refresh");
+        button.setSize(100,30);
+        button.setLocation(430,300);
+
         jImage = new JLabel(new ImageIcon("batman.jpg"));
-        jImage.setSize(300,150);
-        jImage.setLocation(150,100);
-        panel.add(button);
-        panel.add(jImage);
+        jImage.setSize(400,450);
+        jImage.setLocation(0,-50);
+
         setContentPane(panel);
         setSize(250, 150);
-        setBounds(500,500,750,400);
+        setBounds(400,250,600,400);
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -45,6 +41,14 @@ public class SimpleWindow extends JFrame {
             }
         });
 
+        jTextField = new JTextField();
+        jTextField.setSize(100,30);
+        jTextField.setLocation(430,100);
+
+
+        panel.add(button);
+        panel.add(jImage);
+        panel.add(jTextField);
     }
 
     static void update() {
