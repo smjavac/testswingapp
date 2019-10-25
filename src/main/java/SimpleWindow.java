@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class SimpleWindow extends JFrame {
     private int total;
-    private  int x;
+    private int x;
     private int y;
     private int scope;
     private JTextField jTextField;
@@ -51,6 +51,11 @@ public class SimpleWindow extends JFrame {
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
     }
 
+    public static void main(String[] args) {
+        AppStarter starter = new AppStarter();
+        SwingUtilities.invokeLater(starter);
+    }
+
     void update() {
         x = (int) (Math.random() * 10);
         y = (int) (Math.random() * 10);
@@ -89,6 +94,15 @@ public class SimpleWindow extends JFrame {
             jTextField.setText("");
             jTextField.grabFocus();
         }
+    }
+}
+
+class AppStarter extends Thread {
+    public void run() {
+        SimpleWindow myWindow = new SimpleWindow(1);
+        myWindow.setVisible(true);
+        myWindow.update();
+
     }
 }
 

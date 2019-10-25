@@ -58,9 +58,9 @@ public class Lesson {
 
 
 
-        SimpleWindow myWindow = new SimpleWindow(1);
-        myWindow.setVisible(true);
-        myWindow.update();
+//        SimpleWindow myWindow = new SimpleWindow(1);
+//        myWindow.setVisible(true);
+//        myWindow.update();
     }
 
 //    static JFrame getFrame() {
