@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 
 public class SimpleWindow extends JFrame {
 
-    private  int total;
-
+    private int total;
 
 
     private int x;
@@ -55,10 +54,6 @@ public class SimpleWindow extends JFrame {
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
     }
 
-
-
-
-
     void update() {
 
         x = (int) (Math.random() * 10);
@@ -66,8 +61,6 @@ public class SimpleWindow extends JFrame {
         String labelText = x + " * " + y;
         jLabel.setText(labelText);
     }
-
-
 
 
     void check(String text) {
