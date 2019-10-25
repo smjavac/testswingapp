@@ -4,19 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SimpleWindow extends JFrame {
-    private static int total;
-    private static int x;
-    private static int y;
-    private static int scope;
-    private static JTextField jTextField;
-    private static JLabel jLabel;
+    private  int total;
+    private int x;
+    private int y;
+    private int scope;
+    private JTextField jTextField;
+    private JLabel jLabel;
 
     SimpleWindow(int total) {
         super("Пробное окно");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        SimpleWindow.total = total;
+        this.total = total;
 
         JButton button = new JButton("refresh");
         button.setSize(100, 30);
@@ -51,14 +51,14 @@ public class SimpleWindow extends JFrame {
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
     }
 
-    static void update() {
+     void update() {
         x = (int) (Math.random() * 10);
         y = (int) (Math.random() * 10);
         String labelText = x + " * " + y;
         jLabel.setText(labelText);
     }
 
-    static void check(String text) {
+     void check(String text) {
         int a = Integer.parseInt(text);
         Icon icon;
         if (a == x * y) {
