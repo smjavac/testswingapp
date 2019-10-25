@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SimpleWindow extends JFrame {
+
     private  int total;
+
+
+
     private int x;
     private int y;
     private int scope;
@@ -51,14 +55,23 @@ public class SimpleWindow extends JFrame {
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
     }
 
-     void update() {
+
+
+
+
+    void update() {
+
         x = (int) (Math.random() * 10);
         y = (int) (Math.random() * 10);
         String labelText = x + " * " + y;
         jLabel.setText(labelText);
     }
 
-     void check(String text) {
+
+
+
+    void check(String text) {
+
         int a = Integer.parseInt(text);
         Icon icon;
         if (a == x * y) {
@@ -90,5 +103,17 @@ public class SimpleWindow extends JFrame {
             jTextField.grabFocus();
         }
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Thread() {
+            public void run() {
+                SimpleWindow myWindow = new SimpleWindow(1);
+                myWindow.setVisible(true);
+                myWindow.update();
+            }
+        });
+    }
 }
+
+
 
