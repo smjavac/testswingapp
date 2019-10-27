@@ -1,7 +1,14 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class SimpleWindow extends JFrame {
 
@@ -71,6 +78,7 @@ public class SimpleWindow extends JFrame {
             scope++;
             if (scope <= total) {
                 icon = new ImageIcon("ok.jpg");
+                playSound("ok.wav");
                 JOptionPane.showMessageDialog(new JFrame(), "Ты молодец!", "", 1, icon);
                 jTextField.setText("");
                 jTextField.grabFocus();
@@ -91,9 +99,30 @@ public class SimpleWindow extends JFrame {
             }
         } else {
             icon = new ImageIcon("wrong2.jpg");
+ //            try {
+//                File f = new File("error2.mp3");
+//                Media hit = new Media(f.toURI().toString());
+//                MediaPlayer mediaPlayer = new MediaPlayer(hit);
+//                mediaPlayer.play();
+//            } catch(Exception ex) {
+//                ex.printStackTrace();
+//                System.out.println("Exception: " + ex.getMessage());
+//            }
+            playSound("wrong.wav");
             JOptionPane.showMessageDialog(new JFrame(), "Попробуй еще раз!", "Не правильно!", 0, icon);
             jTextField.setText("");
             jTextField.grabFocus();
+        }
+    }
+
+    void playSound(String path) {
+        try (AudioInputStream inAudio = AudioSystem.getAudioInputStream(new File(path))){
+            Clip clip = AudioSystem.getClip();
+            clip.open(inAudio);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
