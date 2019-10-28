@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -24,7 +25,7 @@ public class SimpleWindow extends JFrame {
     SimpleWindow(int total) {
         super("Пробное окно");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JPanel panel = new JPanel();
+        JFXPanel panel = new JFXPanel();
         panel.setLayout(null);
         this.total = total;
 
@@ -99,16 +100,16 @@ public class SimpleWindow extends JFrame {
             }
         } else {
             icon = new ImageIcon("wrong2.jpg");
- //            try {
-//                File f = new File("error2.mp3");
-//                Media hit = new Media(f.toURI().toString());
-//                MediaPlayer mediaPlayer = new MediaPlayer(hit);
-//                mediaPlayer.play();
-//            } catch(Exception ex) {
-//                ex.printStackTrace();
-//                System.out.println("Exception: " + ex.getMessage());
-//            }
-            playSound("wrong.wav");
+             try {
+                File f = new File("error2.mp3");
+                Media hit = new Media(f.toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(hit);
+                mediaPlayer.play();
+            } catch(Exception ex) {
+                ex.printStackTrace();
+                System.out.println("Exception: " + ex.getMessage());
+            }
+          //  playSound("wrong.wav");
             JOptionPane.showMessageDialog(new JFrame(), "Попробуй еще раз!", "Не правильно!", 0, icon);
             jTextField.setText("");
             jTextField.grabFocus();
