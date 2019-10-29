@@ -21,9 +21,16 @@ public class SimpleWindow extends JFrame {
     private int scope;
     private JTextField jTextField;
     private JLabel jLabel;
+    static int num;
+
+    static {
+        String factor = JOptionPane.showInputDialog(
+                "Введите макскимальное значение");
+        num = Integer.parseInt(factor);
+    }
 
     SimpleWindow(int total) {
-        super("Пробное окно");
+        super("Таблица умножения");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JFXPanel panel = new JFXPanel();
         panel.setLayout(null);
@@ -62,10 +69,10 @@ public class SimpleWindow extends JFrame {
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
     }
 
-    void update() {
+    void update(int a) {
 
-        x = (int) (Math.random() * 10);
-        y = (int) (Math.random() * 10);
+        x = (int) (Math.random() * a);
+        y = (int) (Math.random() * a);
         String labelText = x + " * " + y;
         jLabel.setText(labelText);
     }
@@ -83,7 +90,7 @@ public class SimpleWindow extends JFrame {
                 JOptionPane.showMessageDialog(new JFrame(), "Ты молодец!", "", 1, icon);
                 jTextField.setText("");
                 jTextField.grabFocus();
-                update();
+                update(num);
 
             } else {
                 icon = new ImageIcon("end.jpg");
@@ -93,7 +100,7 @@ public class SimpleWindow extends JFrame {
                     jTextField.setText("");
                     jTextField.grabFocus();
                     scope = 0;
-                    update();
+                    update(num);
                 } else {
                     System.exit(0);
                 }
@@ -132,7 +139,7 @@ public class SimpleWindow extends JFrame {
             public void run() {
                 SimpleWindow myWindow = new SimpleWindow(1);
                 myWindow.setVisible(true);
-                myWindow.update();
+                myWindow.update(num);
             }
         });
     }
