@@ -14,23 +14,20 @@ import javafx.scene.media.MediaPlayer;
 public class SimpleWindow extends JFrame {
 
     private int total;
-
-
     private int x;
     private int y;
     private int scope;
     private JTextField jTextField;
     private JLabel jLabel;
-    static int num;
+    private int num;
 
-    static {
-        String factor = JOptionPane.showInputDialog(
-                "Введите макскимальное значение");
-        num = Integer.parseInt(factor);
-    }
 
     SimpleWindow(int total) {
         super("Таблица умножения");
+        String factor = JOptionPane.showInputDialog(
+                "Введите макскимальное значение");
+        num = Integer.parseInt(factor);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JFXPanel panel = new JFXPanel();
         panel.setLayout(null);
@@ -67,6 +64,8 @@ public class SimpleWindow extends JFrame {
         Dimension dimension = toolkit.getScreenSize();
         setSize(250, 150);
         setBounds(dimension.width / 2 - 250, dimension.height / 2 - 150, 600, 400);
+
+        update(num);
     }
 
     void update(int a) {
@@ -107,16 +106,16 @@ public class SimpleWindow extends JFrame {
             }
         } else {
             icon = new ImageIcon("wrong2.jpg");
-             try {
+            try {
                 File f = new File("error2.mp3");
                 Media hit = new Media(f.toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(hit);
                 mediaPlayer.play();
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 System.out.println("Exception: " + ex.getMessage());
             }
-          //  playSound("wrong.wav");
+            //  playSound("wrong.wav");
             JOptionPane.showMessageDialog(new JFrame(), "Попробуй еще раз!", "Не правильно!", 0, icon);
             jTextField.setText("");
             jTextField.grabFocus();
@@ -124,7 +123,7 @@ public class SimpleWindow extends JFrame {
     }
 
     void playSound(String path) {
-        try (AudioInputStream inAudio = AudioSystem.getAudioInputStream(new File(path))){
+        try (AudioInputStream inAudio = AudioSystem.getAudioInputStream(new File(path))) {
             Clip clip = AudioSystem.getClip();
             clip.open(inAudio);
             clip.start();
@@ -139,7 +138,6 @@ public class SimpleWindow extends JFrame {
             public void run() {
                 SimpleWindow myWindow = new SimpleWindow(1);
                 myWindow.setVisible(true);
-                myWindow.update(num);
             }
         });
     }
